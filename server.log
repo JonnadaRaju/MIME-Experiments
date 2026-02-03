@@ -1,0 +1,7 @@
+
+> mime-types-demo@1.0.0 start
+> node server.js
+
+🚀 MIME Types Demo Server running on port 4000
+📋 Available endpoints: http://localhost:4000/api/endpoints
+📁 Uploads directory: /home/rajujonnada/mime/uploads

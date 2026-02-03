@@ -1,0 +1,391 @@
+{
+  "info": {
+    "name": "MIME Types Demo API",
+    "description": "Complete collection for testing all major MIME types",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "📝 Text MIME Types",
+      "item": [
+        {
+          "name": "Plain Text",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/text/plain",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "text", "plain"]
+            },
+            "description": "Returns plain text with text/plain MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "HTML",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/text/html",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "text", "html"]
+            },
+            "description": "Returns HTML content with text/html MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "CSS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/text/css",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "text", "css"]
+            },
+            "description": "Returns CSS stylesheet with text/css MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "JavaScript",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/text/javascript",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "text", "javascript"]
+            },
+            "description": "Returns JavaScript code with text/javascript MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "CSV",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/text/csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "text", "csv"]
+            },
+            "description": "Returns CSV data with text/csv MIME type (downloads file)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "⚙️ Application MIME Types",
+      "item": [
+        {
+          "name": "JSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/application/json",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "application", "json"]
+            },
+            "description": "Returns JSON data with application/json MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "XML",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/application/xml",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "application", "xml"]
+            },
+            "description": "Returns XML data with application/xml MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/application/pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "application", "pdf"]
+            },
+            "description": "Returns PDF file with application/pdf MIME type (downloads file)"
+          },
+          "response": []
+        },
+        {
+          "name": "ZIP",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/application/zip",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "application", "zip"]
+            },
+            "description": "Returns ZIP file with application/zip MIME type (downloads file)"
+          },
+          "response": []
+        },
+        {
+          "name": "Octet Stream",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/application/octet-stream",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "application", "octet-stream"]
+            },
+            "description": "Returns binary data with application/octet-stream MIME type"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🖼️ Image MIME Types",
+      "item": [
+        {
+          "name": "JPEG",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/image/jpeg",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "image", "jpeg"]
+            },
+            "description": "Returns JPEG image with image/jpeg MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "PNG",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/image/png",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "image", "png"]
+            },
+            "description": "Returns PNG image with image/png MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "SVG",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/image/svg+xml",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "image", "svg+xml"]
+            },
+            "description": "Returns SVG image with image/svg+xml MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "GIF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/image/gif",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "image", "gif"]
+            },
+            "description": "Returns GIF image with image/gif MIME type"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🎥 Video MIME Types",
+      "item": [
+        {
+          "name": "MP4",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/video/mp4",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "video", "mp4"]
+            },
+            "description": "Returns MP4 video with video/mp4 MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "WebM",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/video/webm",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "video", "webm"]
+            },
+            "description": "Returns WebM video with video/webm MIME type"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📦 Multipart MIME Types",
+      "item": [
+        {
+          "name": "Single File Upload",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "name",
+                  "value": "John Doe",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Test file upload via Postman",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/multipart/form-data",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "multipart", "form-data"]
+            },
+            "description": "Upload single file with multipart/form-data MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "Multiple Files Upload",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "files",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "uploadType",
+                  "value": "multiple",
+                  "type": "text"
+                },
+                {
+                  "key": "user",
+                  "value": "Postman User",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/multipart/multiple",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "multipart", "multiple"]
+            },
+            "description": "Upload multiple files with multipart/form-data MIME type"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "✉️ Message MIME Types",
+      "item": [
+        {
+          "name": "RFC 822 Email",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/message/rfc822",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "message", "rfc822"]
+            },
+            "description": "Returns email message with message/rfc822 MIME type"
+          },
+          "response": []
+        },
+        {
+          "name": "HTTP Message",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/message/http",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "message", "http"]
+            },
+            "description": "Returns HTTP message with message/http MIME type"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📋 Utility",
+      "item": [
+        {
+          "name": "List All Endpoints",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/endpoints",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "endpoints"]
+            },
+            "description": "Returns JSON list of all available endpoints"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
