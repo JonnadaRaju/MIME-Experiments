@@ -43,7 +43,10 @@ async def get_plain_text():
         "X-Content-Type": "text/plain",
         "X-Endpoint": "/api/text/plain",
         "X-Server": "FastAPI",
-        "X-Custom-MIME": "plain-text-demo"
+        "X-Custom-MIME": "plain-text-demo",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "Content-Length": str(len(content.encode('utf-8')))
     }
     return Response(content=content, media_type="text/plain", headers=headers)
 

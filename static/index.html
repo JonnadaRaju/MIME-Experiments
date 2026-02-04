@@ -889,7 +889,18 @@
                 </div>
                 
                 <div class="response-content" style="display: none;" id="${responseArea.id}-headers">
-                    <strong>All Response Headers:</strong> (${Object.keys(response.headers).length} headers found)<br><br>
+                    <strong>HTTP Response:</strong><br><br>
+                    <pre style="color: #68d391; font-size: 0.9rem; background: #1a202c; padding: 15px; border-radius: 8px;">HTTP/1.1 ${response.status} ${response.statusText}
+Content-Type: ${response.keyHeaders?.['Content-Type'] || 'application/octet-stream'}
+Content-Length: ${response.keyHeaders?.['Content-Length'] || '0'}
+Cache-Control: ${response.keyHeaders?.['Cache-Control'] || 'no-cache'}
+Connection: keep-alive
+Date: ${new Date().toUTCString()}
+Server: uvicorn${Object.keys(response.headers).length > 0 ? 
+    Object.keys(response.headers).filter(key => !['content-type', 'content-length', 'cache-control', 'connection', 'date', 'server'].includes(key.toLowerCase()))
+        .map(key => `\n${key}: ${response.headers[key]}`).join('') : ''}</pre>
+                    
+                    <br><strong>Raw Response Headers:</strong> (${Object.keys(response.headers).length} headers found)<br><br>
                     <pre style="color: #a0aec0; font-size: 0.8rem;">${JSON.stringify(response.headers, null, 2)}</pre>
                     
                     ${Object.keys(response.keyHeaders).length > 0 ? `
