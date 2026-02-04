@@ -23,6 +23,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],  # Expose all headers to client
 )
 
 # Create directories
@@ -38,31 +39,37 @@ app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 async def get_plain_text():
     """Serve plain text content"""
     content = "This is plain text content served with text/plain MIME type"
-    return Response(content=content, media_type="text/plain")
+    headers = {
+        "X-Content-Type": "text/plain",
+        "X-Endpoint": "/api/text/plain",
+        "X-Server": "FastAPI",
+        "X-Custom-MIME": "plain-text-demo"
+    }
+    return Response(content=content, media_type="text/plain", headers=headers)
 
 @app.get("/api/text/html", response_class=HTMLResponse)
 async def get_html():
     """Serve HTML content"""
-    html_content = """
+    html_content = f"""
     <!DOCTYPE html>
     <html>
     <head>
         <title>HTML MIME Demo</title>
         <style>
-            body { font-family: Arial, sans-serif; margin: 40px; }
-            .container { border: 2px solid #007bff; padding: 20px; border-radius: 10px; }
-            h1 { color: #007bff; }
+            body {{ font-family: Arial, sans-serif; margin: 40px; }}
+            .container {{ border: 2px solid #007bff; padding: 20px; border-radius: 10px; }}
+            h1 {{ color: #007bff; }}
         </style>
     </head>
     <body>
         <div class="container">
             <h1>This is HTML content</h1>
             <p>Served with text/html MIME type</p>
-            <p>Timestamp: {}</p>
+            <p>Timestamp: {datetime.now().isoformat()}</p>
         </div>
     </body>
     </html>
-    """.format(datetime.now().isoformat())
+    """
     return HTMLResponse(content=html_content)
 
 @app.get("/api/text/css", response_class=Response)
@@ -144,7 +151,7 @@ async def get_csv():
 @app.get("/api/application/json", response_class=JSONResponse)
 async def get_json():
     """Serve JSON content"""
-    return {
+    response_data = {
         "message": "This is JSON content",
         "timestamp": datetime.now().isoformat(),
         "server": "FastAPI MIME Demo",
@@ -163,6 +170,15 @@ async def get_json():
         },
         "mime_type": "application/json"
     }
+    
+    headers = {
+        "X-Custom-Header": "FastAPI-Demo",
+        "X-Response-Time": datetime.now().isoformat(),
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY"
+    }
+    
+    return JSONResponse(content=response_data, headers=headers)
 
 @app.get("/api/application/xml", response_class=Response)
 async def get_xml():
@@ -518,6 +534,36 @@ async def root():
     """Serve the main demo page"""
     return FileResponse("static/index.html")
 
+@app.get("/api/headers-demo", response_class=JSONResponse)
+async def headers_demo():
+    """Demonstrate custom headers and CORS functionality"""
+    response_data = {
+        "message": "This endpoint demonstrates custom header functionality",
+        "purpose": "Test CORS header exposure and client-side header access",
+        "timestamp": datetime.now().isoformat(),
+        "instructions": [
+            "Check the Headers tab to see all response headers",
+            "Look for X-Custom-* headers",
+            "Verify Content-Type and other standard headers",
+            "Use browser DevTools Network tab for complete header inspection"
+        ]
+    }
+    
+    # Add various custom headers for testing
+    headers = {
+        "X-Custom-Demo": "Header-Exposure-Test",
+        "X-Endpoint-Name": "/api/headers-demo",
+        "X-Server-Time": datetime.now().isoformat(),
+        "X-Request-ID": f"demo-{int(datetime.now().timestamp())}",
+        "X-Content-Type": "application/json",
+        "X-Test-CORS": "Should be visible",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+    }
+    
+    return JSONResponse(content=response_data, headers=headers)
+
 @app.get("/api/endpoints", response_class=JSONResponse)
 async def get_endpoints():
     """Get all available endpoints"""
@@ -556,7 +602,8 @@ async def get_endpoints():
             ],
             "utility": [
                 {"method": "GET", "path": "/", "description": "Main demo page"},
-                {"method": "GET", "path": "/api/endpoints", "description": "List all endpoints"}
+                {"method": "GET", "path": "/api/endpoints", "description": "List all endpoints"},
+                {"method": "GET", "path": "/api/headers-demo", "description": "Headers and CORS demo"}
             ]
         },
         "usage": {
